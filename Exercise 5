@@ -1,1 +1,14 @@
-
+import tkinter 
+window = tkinter.Tk()
+window.geometry("300x300")
+label_1 = tkinter.Label(window, text="Enter a sentence with at least 10 letters")
+label_1.pack()
+entry_1 = tkinter.Entry(window)
+entry_1.pack()
+def func_1():
+    var = entry_1.get()
+    var = "Hi there" + var
+    label_1.configure(text=var)
+j_button = tkinter.Button(window,text="Jumble",command=func_1)
+j_button.pack()
+window.mainloop()
