@@ -4,7 +4,7 @@ groot = tkinter.Tk()
 
 groot.geometry("900x900")
 
-groot.configure(bg='red')
+groot.configure(bg='black')
 
 groot.title("My app")
 
