@@ -9,6 +9,6 @@ def func_1():
     var = entry_1.get()
     var = "Hi there" + var
     label_1.configure(text=var)
-j_button = tkinter.Button(window,text="Jumble",command=func_1)
+j_button = tkinter.Button(window,text="Button",command=func_1)
 j_button.pack()
 window.mainloop()
