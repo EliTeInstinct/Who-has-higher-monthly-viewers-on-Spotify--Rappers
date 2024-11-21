@@ -1,34 +1,94 @@
-# Arturo Rivera, Jeffrey Ramirez, Christian Zarseno Hernandez, Yener Lopez 
-import tkinter as tk
+# Jeffrey Ramirez, Christian 
+import tkinter
+box = tkinter.Tk()
+box.geometry("400x400")
+strvar = tkinter.StringVar(value="1")
 
-box = tk.Tk(className='Color Changer')
-box.minsize(400, 250)
+def dothis():
+    temp = strvar.get()
+    Label_1.configure(text=temp)
 
-def setColor():
-    picked = Number_1.curselection()
-    temp_text = Number_1.get(picked)
-    if temp_text == 'custom':
-            setCustomColor()
+radio_1 = tkinter.Radiobutton(box)
+radio_1.configure(text="Cat",variable=strvar,value="Black cat")
+radio_1.pack()
+
+radio_2 = tkinter.Radiobutton(box)
+radio_2.configure(text="Dog",variable=strvar,value="White dog")
+radio_2.pack()
+
+radio_3 = tkinter.Radiobutton(box)
+radio_3.configure(text="Cow",variable=strvar,value="Brown cow")
+radio_3.pack()
+
+radio_4 = tkinter.Radiobutton(box)
+radio_4.configure(text="Bird",variable=strvar,value="Blue bird")
+radio_4.pack()
+
+bool1 = tkinter.BooleanVar()
+bool2 = tkinter.BooleanVar()
+bool3 = tkinter.BooleanVar()
+bool4 = tkinter.BooleanVar()
+
+def check1():
+    if bool1.get():
+        label_a.configure(text="Yes")
     else:
-        power.configure(text=temp_text)
-        box.config(bg=temp_text)
+        label_a.configure(text="No")
+def check2():
+    if bool2.get():
+        label_b.configure(text="Yes")
+    else:
+        label_b.configure(text="No")
+def check3():
+    if bool3.get():
+        label_c.configure(text="Yes")
+    else:
+        label_c.configure(text="No")
+def check4():
+    if bool4.get():
+        label_d.configure(text="Yes")
+    else:
+        label_d.configure(text="No")
 
-Number_1 = tk.Listbox(box, selectmode=tk.SINGLE, height="6")
-Number_1.insert(tk.END, 'red')
-Number_1.insert(tk.END, 'blue')
-Number_1.insert(tk.END, 'green')
-Number_1.insert(tk.END, 'orange')
-Number_1.insert(tk.END, 'cyan')
-Number_1.insert(tk.END, 'gray')
+Label_1 = tkinter.Label(box, text="Your Selection")
+Label_1.pack()
 
-Number_1.pack()
-Number_1.select_set(3)
+label_a = tkinter.Label(box, text="Check")
+label_b = tkinter.Label(box, text="Check")
+label_c = tkinter.Label(box, text="Check")
+label_d = tkinter.Label(box, text="Check")
 
-home = tk.Button(box, text='Set Color', command=setColor)
+def dothat():
+    label_a.configure(text=bool1.get())
+    label_b.configure(text=bool2.get())
+    label_c.configure(text=bool3.get())
+    label_d.configure(text=bool4.get())
 
-power = tk.Label(box, text='your selection')
+line = tkinter.Label(box, text="-------------------")
+line.pack()
 
-home.pack()
-power.pack()
+def combined():
+    dothis()
+    dothat()
+    check1()
+    check2()
+    check3()
+    check4()
+button = tkinter.Button(box,text="Push", command=combined)
 
+check_button1 = tkinter.Checkbutton(box, text="Checkbox 1",variable=bool1)
+check_button1.pack()
+check_button2 = tkinter.Checkbutton(box, text="Checkbox 2",variable=bool2)
+check_button2.pack()
+check_button3 = tkinter.Checkbutton(box, text="Checkbox 3",variable=bool3)
+check_button3.pack()
+check_button4 = tkinter.Checkbutton(box, text="Checkbox 4",variable=bool4)
+check_button4.pack()
+
+label_a.pack()
+label_b.pack()
+label_c.pack()
+label_d.pack()
+
+button.pack()
 box.mainloop()
