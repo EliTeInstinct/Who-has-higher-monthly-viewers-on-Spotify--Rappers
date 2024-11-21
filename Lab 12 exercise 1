@@ -1,4 +1,4 @@
-# Jeffrey Ramirez, Christian 
+# Jeffrey Ramirez, Arturo Rivera, Christian Zarseno Hernandez, Yener Lopez
 import tkinter
 box = tkinter.Tk()
 box.geometry("400x400")
