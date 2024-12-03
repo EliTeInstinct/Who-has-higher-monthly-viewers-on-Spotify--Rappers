@@ -14,7 +14,7 @@ def show_screen(frame):
 def show_random_frame():
     #Pick a random screen/frame and displays it without repeating the last one. Work in Progress
     global last_shown_frame
-    
+
     # Exclude the last shown frame from the random selection
     available_frames = [frame for frame in frames if frame != last_shown_frame]
 
@@ -64,15 +64,6 @@ def random_screen():
     show_screen(random_frame)
     random_frame.update_idletasks()
 
-
-
-
-
-
-
-
-
-
 # This is a temporary logo
 logo = tk.PhotoImage(file="/Users/jeffreyramirez/Desktop/logo.png") #Enter a logo image
 # Rapper images 
@@ -110,13 +101,11 @@ start.pack()
 #start_button = tk.Button(menu_screen, text="Start Game", command=show_game)
 #start_button.pack()
 
-
-
 # Game screen
-game_screen = tk.Frame(spark)
-game_image_label = tk.Label(game_screen, image= #enter rapper image)
+game_screen = tk.Frame(window)
+game_image_label = tk.Label(game_screen, image="") #enter rapper image to the left
 game_image_label.place(x=350,y=0)
-game_image_label2 = tk.Label(game_screen, image= #enter rapper image)
+game_image_label2 = tk.Label(game_screen, image="") #enter rapper image to the left
 game_image_label2.place(x=0,y=0)
 game_label = tk.Label(game_screen, text="Score", font=("Arial", 18))
 game_label.place(x=300,y=0)
@@ -124,17 +113,14 @@ game_label.place(x=300,y=0)
 return_back = tk.Button(game_screen, text="Back to Main Menu", command=back_to_menu).place(x=250,y=350)
 incorrect_answer = tk.Button()
 
-# if wrong
-
-
 label_question = tk.Label(game_screen, text="Does ? have higher monthly Spotify listners than ?",font=('Arial',18))
 label_question.place(x=200,y=50)
 
 # Next screen 
 screen = tk.Frame(window)
-image_label = tk.Label(screen, image= #enter rapper image)
+image_label = tk.Label(screen, image= "") #enter rapper image to the left
 image_label.place(x=0,y=0)
-image_labela = tk.Label(screen, image= #enter rapper image)
+image_labela = tk.Label(screen, image= "") #enter rapper image to the left
 image_labela.place(x=500,y=0)
 #
 button_next = tk.Button(game_screen, text="Higher", command=show_random_frame)
@@ -144,13 +130,13 @@ incorrect_answer = tk.Button(screen, text="Lower", command=back_to_menu).place(x
 
 # Screen 2
 screen2 = tk.Frame(window)
-image_label2 = tk.Label(screen2, image= #enter rapper image).pack()
+image_label2 = tk.Label(screen2, image= "").pack() #enter rapper image
 button_next2 = tk.Button(screen, text="Higher", command=show_random_frame)
 button_next2.place(x=300,y=250)
 
 # Screen 3
 screen3 = tk.Frame(window)
-image_label3 = tk.Label(screen3, image= # Enter rapper image).pack()
+image_label3 = tk.Label(screen3, image= "").pack() #enter rapper image
 
 button_next3 = tk.Button(screen2, text="sample button", command=show_random_frame)
 button_next3.place(x=300,y=250)
@@ -160,8 +146,6 @@ image_label4 = tk.Label(screen4, image=logo).pack()
 
 button_next4 = tk.Button(screen3, text="sample button", command=show_random_frame)
 button_next4.place(x=300,y=250)
-
-
 
 frames = [game_screen, screen, screen2, screen3]
 # Show the initial screen
