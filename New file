@@ -1,0 +1,157 @@
+import tkinter as tk
+import random
+window = tk.Tk()
+window.title("Higher or Lower")
+window.geometry("800x500")
+
+def show_screen(frame):
+    for f in frames:
+        f.pack_forget()  # Hide all screens/frames
+    menu_screen.pack_forget()
+    frame.pack(fill="both", expand=True)  # Shows the selected screen/frame
+    window.update_idletasks()
+
+def show_random_frame():
+    #Pick a random screen/frame and displays it without repeating the last one. Work in Progress
+    global last_shown_frame
+
+    # Exclude the last shown frame from the random selection
+    available_frames = [frame for frame in frames if frame != last_shown_frame]
+
+    # Pick a random frame from the available ones
+    random_frame = random.choice(available_frames)
+
+    show_screen(random_frame) 
+    last_shown_frame = random_frame 
+last_shown_frame = None
+
+def back_to_menu():
+    show_screen(menu_screen)
+
+def show_menu():
+    """Switch to the menu screen."""
+    game_screen.pack_forget()
+    menu_screen.pack(fill="both", expand=True)
+    window.update_idletasks()  
+
+def show_game():
+    menu_screen.pack_forget()  
+    game_screen.pack(fill="both", expand=True) 
+    game_screen.update_idletasks()
+
+def switch_screen():
+    game_screen.pack_forget()
+    screen.pack(fill="both", expand=True)
+    screen.update_idletasks()
+
+def switch_screen2():
+    screen.pack_forget()
+    screen2.pack(fill="both", expand=True)
+    screen2.update_idletasks()
+def switch_screen3():
+    screen2.pack_forget()
+    screen3.pack(fill="both", expand=True)
+    window.update_idletasks()
+def switch_screen4():
+    screen3.pack_forget()
+    screen4.pack(fill="both", expand=True)
+
+
+def random_screen():
+    # Picks a random screen/frame then displays it
+    random_frame = random.choice([game_screen, screen, screen2,screen3, screen4])
+    show_screen(random_frame)
+    random_frame.update_idletasks()
+
+# This is a temporary logo
+logo = tk.PhotoImage(file="/Users/jeffreyramirez/Desktop/logo.png") #Enter a logo image
+# Rapper images 
+kanye = tk.PhotoImage(file="/Users/jeffreyramirez/Desktop/ye.png")
+kendrick= tk.PhotoImage(file="/Users/jeffreyramirez/Desktop/lamar.png")  
+uzi = tk.PhotoImage(file="/Users/jeffreyramirez/Desktop/liluzi.png")  
+jack = tk.PhotoImage(file="/Users/jeffreyramirez/Desktop/jack.png")
+travis = tk.PhotoImage(file="/Users/jeffreyramirez/Desktop/travis.png")
+eminem = tk.PhotoImage(file="/Users/jeffreyramirez/Desktop/eminem.png")
+ice_cube = tk.PhotoImage(file="/Users/jeffreyramirez/Desktop/cube.png")
+juice_wrld = tk.PhotoImage(file="/Users/jeffreyramirez/Desktop/juice.png")
+lilwayne = tk.PhotoImage(file="/Users/jeffreyramirez/Desktop/lilwayne.png")
+nicki  = tk.PhotoImage(file="/Users/jeffreyramirez/Desktop/nicki.png")
+postmalone = tk.PhotoImage(file="/Users/jeffreyramirez/Desktop/postmalone.png")
+snoop  = tk.PhotoImage(file="/Users/jeffreyramirez/Desktop/snoopdogg.png")
+tripie_redd= tk.PhotoImage(file="/Users/jeffreyramirez/Desktop/tripie.png")
+jayz = tk.PhotoImage(file="/Users/jeffreyramirez/Desktop/JayZ.png")
+savage21 = tk.PhotoImage(file="/Users/jeffreyramirez/Desktop/21Savage.png")
+bad_bunny = tk.PhotoImage(file="/Users/jeffreyramirez/Desktop/BadBunny.png")
+drake = tk.PhotoImage(file="/Users/jeffreyramirez/Desktop/Drake.png")
+# Enter rapper name  = tk.PhotoImage(file=" # Enter file path")
+# Enter rapper name  = tk.PhotoImage(file=" # Enter file path")
+# Enter rapper name  = tk.PhotoImage(file=" # Enter file path")
+
+last_shown_frame = None
+# Menu screen
+menu_screen = tk.Frame(window)
+menu_label = tk.Label(menu_screen, text="Menu Screen", font=("Arial", 18))
+menu_label.pack(pady=10)
+menu_image_label = tk.Label(menu_screen, image=logo)  # Display the menu image
+menu_image_label.pack(pady=10)
+start = tk.Button(menu_screen, text="Start Game", command=show_random_frame)
+start.pack()
+
+#start_button = tk.Button(menu_screen, text="Start Game", command=show_game)
+#start_button.pack()
+
+# Game screen
+game_screen = tk.Frame(window)
+game_image_label = tk.Label(game_screen, image=kanye) #enter rapper image to the left
+game_image_label.place(x=350,y=0)
+game_image_label2 = tk.Label(game_screen, image=kendrick) #enter rapper image to the left
+game_image_label2.place(x=0,y=0)
+game_label = tk.Label(game_screen, text="Score", font=("Arial", 18))
+game_label.place(x=300,y=0)
+
+return_back = tk.Button(game_screen, text="Back to Main Menu", command=back_to_menu).place(x=250,y=350)
+
+label_question = tk.Label(game_screen, text="Does ? have higher monthly Spotify listners than ?",font=('Arial',18))
+label_question.place(x=200,y=50)
+
+# Next screen 
+screen = tk.Frame(window)
+image_label = tk.Label(screen, image=uzi) #enter rapper image to the left
+image_label.place(x=0,y=0)
+image_labela = tk.Label(screen, image=jack) #enter rapper image to the left
+image_labela.place(x=500,y=0)
+incorrect_answer = tk.Button(screen, text="Lower", command=back_to_menu).place(x=400,y=400)
+#
+button_next = tk.Button(game_screen, text="Higher", command=show_random_frame)
+button_next.place(x=250,y=250)
+# This brings you back to the maain menu if you selected a wrong answer
+
+# Screen 2
+screen2 = tk.Frame(window)
+image_label2 = tk.Label(screen2, image=eminem).place(x=0,y=0)
+image_labelb = tk.Label(screen2, image=travis).place(x=400,y=0)
+button_next2 = tk.Button(screen2, text="Higher", command=show_random_frame)
+button_next2.place(x=300,y=250)
+
+# Screen 3
+screen3 = tk.Frame(window)
+image_label3 = tk.Label(screen3, image=nicki).place(x=0,y=0)
+image_labelc = tk.Label(screen3, image=bad_bunny).place(x=800,y=0)
+
+incorrect_answer2 = tk.Button(screen3, text="Higher", command=back_to_menu).place(x=200,y=300)
+button_next3 = tk.Button(screen3, text="Lower", command=show_random_frame)
+button_next3.place(x=300,y=250)
+# Screen 4
+screen4 = tk.Frame(window)
+image_label4 = tk.Label(screen4, image=ice_cube).place(x=0,y=0)
+
+button_next4 = tk.Button(screen4, text="button", command=show_random_frame)
+button_next4.place(x=300,y=250)
+# Screen 5
+screen5 = tk.Frame(window)
+image_label5 = tk.Label(screen5, image=tripie_redd).place(x=0,y=0)
+frames = [game_screen, screen, screen2, screen3]
+# Show the initial screen
+menu_screen.pack(fill="both", expand=True)
+# Run the main loop
+window.mainloop()
