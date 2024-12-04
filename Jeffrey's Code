@@ -14,7 +14,8 @@ def show_screen(frame):
 def show_random_frame():
     #Pick a random screen/frame and displays it without repeating the last one. Work in Progress
     global last_shown_frame
-    # This is an attempt to not display previous screens that have already been displayed
+
+    # Exclude the last shown frame from the random selection
     available_frames = [frame for frame in frames if frame != last_shown_frame]
 
     # Pick a random frame from the available ones
@@ -26,6 +27,35 @@ last_shown_frame = None
 
 def back_to_menu():
     show_screen(menu_screen)
+
+def show_menu():
+    """Switch to the menu screen."""
+    game_screen.pack_forget()
+    menu_screen.pack(fill="both", expand=True)
+    window.update_idletasks()  
+
+def show_game():
+    menu_screen.pack_forget()  
+    game_screen.pack(fill="both", expand=True) 
+    game_screen.update_idletasks()
+
+def switch_screen():
+    game_screen.pack_forget()
+    screen.pack(fill="both", expand=True)
+    screen.update_idletasks()
+
+def switch_screen2():
+    screen.pack_forget()
+    screen2.pack(fill="both", expand=True)
+    screen2.update_idletasks()
+def switch_screen3():
+    screen2.pack_forget()
+    screen3.pack(fill="both", expand=True)
+    window.update_idletasks()
+def switch_screen4():
+    screen3.pack_forget()
+    screen4.pack(fill="both", expand=True)
+
 
 def random_screen():
     # Picks a random screen/frame then displays it
