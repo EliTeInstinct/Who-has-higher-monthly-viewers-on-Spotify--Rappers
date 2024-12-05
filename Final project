@@ -6,56 +6,49 @@ window.geometry("1500x1000")
 
 score = 0
 
-def correct_choice():
-    """Handle the correct button choice: increase score and go to the next frame."""
+def correct_answer():
     global score
-    score += 1  # Increment/inscreases the score
-    update_score_label()  # Update the score label
-    show_next_frame()  # Show the next frame
+    score += 1  
+    update_score_label()  
+    show_next_frame() 
 
 def update_score_label():
-    """Update the score label on all frames."""
     global score_label
     for frame in frames:
         if "score_label" in frame.children:
-            frame.children["score_label"].config(text=f"Score: {score}")
+            frame.children["score_label"].configure(text=f"Score: {score}")
 
 def show_next_frame():
-    # Show the next random frame/screen
     global next_random_screen
-    # If there are frames/screens left to display
     if next_random_screen: 
-        # Remove the current frame/screen and displays the next screen
         next_frame = next_random_screen.pop(0)  
         show_screen(next_frame)
-        # If no more next_random_screen it adds a "Play again" button and bring user back to menu
         if not next_random_screen:
             tk.Button(next_frame, text="Play Again", command=lambda: show_screen(menu_screen)).place(x=700,y=100)
 
 def start_randomization():
-    # Prepare for randomization by shuffling frames and starting the process.
     global next_random_screen
     global final_frame
     global score
     score = 0
     update_score_label()
     random_frames =[f for f in frames if f != final_frame]
-    next_random_screen = random.sample(random_frames,len(random_frames))  # Shuffle a copy of the frames list
+    next_random_screen = random.sample(random_frames,len(random_frames))
     next_random_screen.append(final_frame)
     show_next_frame()
 
 def show_screen(frame):
     for f in frames:
-        f.pack_forget()  # Hide all screens/frames
+        f.pack_forget()
     menu_screen.pack_forget()
-    frame.pack(fill="both", expand=True)  # Shows the selected screen/frame
+    frame.pack(fill="both", expand=True) 
     window.update_idletasks()
 
 def back_to_menu():
     show_screen(menu_screen)
 
 # Logo
-logo = tk.PhotoImage(file="/Users/jeffreyramirez/Desktop/logo.png")
+logo = tk.PhotoImage(file="/Users/jeffreyramirez/Desktop/logo2.png")
 up_arrow = tk.PhotoImage(file="/Users/jeffreyramirez/Desktop/up.png")
 down_arrow = tk.PhotoImage(file="/Users/jeffreyramirez/Desktop/down.png")
 # Rapper images 
@@ -95,7 +88,7 @@ screen0 = tk.Frame(window)
 image_label0 = tk.Label(screen0, image=kanye).place(x=750,y=0)
 image_labela = tk.Label(screen0, image=kendrick).place(x=0,y=0)
 
-button_next0 = tk.Button(screen0, text="Higher", command=correct_choice).place(x=710,y=400)
+button_next0 = tk.Button(screen0, text="Higher", command=correct_answer).place(x=710,y=400)
 incorrect_answer0 = tk.Button(screen0, text="Lower", command= back_to_menu).place(x=710,y=450)
 
 score_label0 = tk.Label(screen0, text=f"Score: {score}", font=("Arial", 25), name="score_label").place(x=700,y=50)
@@ -106,7 +99,7 @@ label_question0 = tk.Label(screen0, text="Does Kendrick have higher monthly Spot
 screen = tk.Frame(window)
 image_label = tk.Label(screen, image=uzi).place(x=0,y=0)
 image_labelb = tk.Label(screen, image=jack).place(x=750,y=0)
-button_next1 = tk.Button(screen, text="Higher", command= correct_choice).place(x=710,y=400)
+button_next1 = tk.Button(screen, text="Higher", command= correct_answer).place(x=710,y=400)
 incorrect_answer = tk.Button(screen, text="Lower", command= back_to_menu).place(x=710,y=450)
 
 score_label = tk.Label(screen, text=f"Score: {score}", font=("Arial", 25), name="score_label").place(x=700,y=50)
@@ -116,7 +109,7 @@ label_question = tk.Label(screen, text="Does Lil Uzi Vert have higher monthly li
 screen2 = tk.Frame(window)
 image_label2 = tk.Label(screen2, image=eminem).place(x=0,y=0)
 image_labelc = tk.Label(screen2, image=travis).place(x=750,y=0)
-button_next2 = tk.Button(screen2, text="Higher", command=correct_choice).place(x=710,y=400)
+button_next2 = tk.Button(screen2, text="Higher", command=correct_answer).place(x=710,y=400)
 incorrect_answer2 = tk.Button(screen2, text="Lower", command=back_to_menu).place(x=710,y=450)
 
 score_label2 = tk.Label(screen2, text=f"Score: {score}", font=("Arial", 25), name="score_label").place(x=700,y=50)
@@ -127,7 +120,7 @@ image_label3 = tk.Label(screen3, image=nicki).place(x=0,y=0)
 image_labeld = tk.Label(screen3, image=bad_bunny).place(x=750,y=0)
 
 incorrect_answer3 = tk.Button(screen3, text="Higher", command=back_to_menu).place(x=710,y=400)
-button_next3 = tk.Button(screen3, text="Lower", command= correct_choice).place(x=710,y=450)
+button_next3 = tk.Button(screen3, text="Lower", command= correct_answer).place(x=710,y=450)
 
 score_label3 = tk.Label(screen3, text=f"Score: {score}", font=("Arial", 25), name="score_label").place(x=700,y=50)
 label_question3 = tk.Label(screen3, text="Does Nicki Minaj have more higher listeners than Bad Bunny?",font=('Arial',30)).place(x=350,y=0)
@@ -137,7 +130,7 @@ image_label4 = tk.Label(screen4, image=juice_wrld).place(x=0,y=0)
 image_labele = tk.Label(screen4, image=postmalone).place(x=750,y=0)
 
 incorrect_answer4 = tk.Button(screen4, text="Higher",command=back_to_menu).place(x=710,y=400)
-button_next4 = tk.Button(screen4, text="Lower", command=correct_choice).place(x=710,y=450)
+button_next4 = tk.Button(screen4, text="Lower", command=correct_answer).place(x=710,y=450)
 
 score_label4 = tk.Label(screen4, text=f"Score: {score}", font=("Arial", 25), name="score_label").place(x=700,y=50)
 label_question4 = tk.Label(screen4, text="Does Juice WRLD have higher monthly listeners than Post Malone?",font=('Arial',30)).place(x=350,y=0)
@@ -147,7 +140,7 @@ image_label5 = tk.Label(screen5, image=tripie_redd).place(x=0,y=0)
 image_labelf = tk.Label(screen5, image=ice_cube).place(x=750,y=0)
 
 incorrect_answer5 = tk.Button(screen5, text="Higher",command=back_to_menu).place(x=710,y=400)
-button_next5 = tk.Button(screen5, text="Lower", command=correct_choice).place(x=710,y=450)
+button_next5 = tk.Button(screen5, text="Lower", command=correct_answer).place(x=710,y=450)
 
 score_label5= tk.Label(screen5, text=f"Score: {score}", font=("Arial", 25), name="score_label").place(x=700,y=50)
 label_question5 = tk.Label(screen5, text="Does Tripie Redd have higher monthly listeners than Ice Cube?",font=('Arial',30)).place(x=350,y=0)
@@ -157,7 +150,7 @@ image_label6 = tk.Label(screen6, image=savage21).place(x=0,y=0)
 image_labelg = tk.Label(screen6, image=snoop).place(x=750,y=0)
 
 incorrect_answer6 = tk.Button(screen6, text="Lower",command=back_to_menu).place(x=710,y=450)
-button_next6 = tk.Button(screen6, text="Higher", command= correct_choice).place(x=710,y=400)
+button_next6 = tk.Button(screen6, text="Higher", command= correct_answer).place(x=710,y=400)
 
 score_label6 = tk.Label(screen6, text=f"Score: {score}", font=("Arial", 25), name="score_label").place(x=700,y=50)
 label_question6 = tk.Label(screen6, text="Does 21 savage have higher monthly listeners than Snoop Dogg?",font=('Arial',30)).place(x=350,y=0)
@@ -168,7 +161,7 @@ image_label7 = tk.Label(screen7, image=jayz).place(x=0,y=0)
 image_labelh = tk.Label(screen7, image=lilwayne).place(x=750,y=0)
 
 incorrect_answer7 = tk.Button(screen7, text="Lower",command=back_to_menu).place(x=710,y=450)
-button_next7 = tk.Button(screen7, text="Higher", command=correct_choice).place(x=710,y=400)
+button_next7 = tk.Button(screen7, text="Higher", command=correct_answer).place(x=710,y=400)
 
 score_label7 = tk.Label(screen7, text=f"Score: {score}", font=("Arial", 25), name="score_label").place(x=700,y=50)
 label_question7 = tk.Label(screen7, text="Does Jay Z have higher monthly listeners than Lil Wayne?",font=('Arial',30)).place(x=350,y=0)
@@ -179,7 +172,7 @@ image_label8 = tk.Label(screen8, image=xxxtentacion).place(x=0,y=0)
 image_labeli = tk.Label(screen8, image=drake).place(x=750,y=0)
 
 incorrect_answer8 = tk.Button(screen8, text="Higher",command=back_to_menu).place(x=710,y=400)
-button_next8 = tk.Button(screen8, text="Lower", command=correct_choice).place(x=710,y=450)
+button_next8 = tk.Button(screen8, text="Lower", command=correct_answer).place(x=710,y=450)
 
 score_label8 = tk.Label(screen8, text=f"Score: {score}", font=("Arial", 25), name="score_label").place(x=700,y=50)
 label_question8 = tk.Label(screen8, text="Does XXXTentacion have higher monthly listeners than Drake?",font=('Arial',30)).place(x=350,y=0)
@@ -190,7 +183,7 @@ image_label9 = tk.Label(screen9, image=playboicarti).place(x=0,y=0)
 image_labelj = tk.Label(screen9, image=tyler).place(x=750,y=0)
 
 incorrect_answer9 = tk.Button(screen9, text="Lower",command=back_to_menu).place(x=710,y=450)
-button_next9 = tk.Button(screen9, text="Higher", command=correct_choice).place(x=710,y=400)
+button_next9 = tk.Button(screen9, text="Higher", command=correct_answer).place(x=710,y=400)
 
 score_label9 = tk.Label(screen9, text=f"Score: {score}", font=("Arial", 25), name="score_label").place(x=700,y=50)
 label_question9 = tk.Label(screen9, text="Does Playboi Carti have higher monthly listeners than Tyler The Creator?",font=('Arial',30)).place(x=350,y=0)
@@ -198,15 +191,13 @@ label_question9 = tk.Label(screen9, text="Does Playboi Carti have higher monthly
 # Screen 10 
 screen10 = tk.Frame(window)
 victory_label = tk.Label(screen10, text="Congratulations You Won!!!!", font=('Arial',50)).pack()
-#confetti = tk.PhotoImage(file="/Users/jeffreyramirez/Desktop/confetti.png")
-#image = tk.Label(screen10, image=confetti).place(x=200,y=100)
+
 score_label10 = tk.Label(screen10, text=f"Score: {score}", font=("Arial", 25), name="score_label")
 score_label10.pack()
 
 frames = [screen0, screen, screen2, screen3, screen4, screen5, screen6, screen7, screen8, screen9, screen10]
 final_frame = screen10
-# Show the initial screen
-next_random_screen = []
+
 menu_screen.pack(fill="both", expand=True)
 # Run the main loop
 window.mainloop()
